@@ -1,0 +1,78 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include"c44.h"
+void menu()
+{
+	printf("*****************\n");
+	printf("***1- start***\n");
+	printf("***0 - end/exit**\n");
+	printf("*****************\n");
+}
+void game()
+{
+	char arr[ROW][COL] = { 0 };
+	int i = 0;
+	initarr(arr, ROW, COL);
+	Display(arr , ROW, COL);
+	char ret = 0;
+	while (1)
+	{
+		playmove(arr, ROW, COL);
+		
+		ret = iswin(arr, ROW, COL);//X/ player win ,O/ computer win g/ 平局,n/继续
+		if (ret != 'n')
+		{ break; 
+		}
+		Display(arr, ROW, COL);
+		computermove(arr, ROW, COL);
+		ret = iswin(arr, ROW, COL);
+		if (ret != 'n')
+		{
+			break;
+		}
+		Display(arr, ROW, COL); 
+		
+	}
+	if (ret == 'X')
+	{
+		printf("player win!!\n");
+	}
+	else
+	{
+		if (ret == '*')
+		{
+			printf("computer win!\n");
+		}
+		else
+		{
+			printf("平局\n");
+		}
+		Display(arr, ROW, COL);
+	}
+}	
+int main()
+{
+	int a = 0;
+	do
+	{
+	menu();
+	scanf("%d", &a);
+	
+		switch (a)
+		{
+		case 1:
+			game();
+			break;
+		case 0:
+			printf("exit");
+			break;
+		default:
+			printf("exit");
+			a = 0;
+			break;
+
+		}
+	} 
+	while (a);
+	return 0;
+}
