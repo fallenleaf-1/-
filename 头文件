@@ -1,0 +1,11 @@
+#pragma once
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+#define ROW 3
+#define COL 3
+void initarr(char p[ROW][COL], int row, int col);
+void Display(char p[ROW][COL], int row, int col);
+void playmove(char p[ROW][COL], int row, int col);
+void computermove(char p[ROW][COL], int row, int col);
+int iswin(char p[ROW][COL], int row, int col);
